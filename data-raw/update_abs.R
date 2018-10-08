@@ -1,0 +1,6 @@
+unlink("abs.tar.gz")
+system("tar cvzf abs.tar.gz extdata/abs")
+files <- list.files("extdata/abs", recursive = TRUE, pattern = "grb$")
+writeLines(files, "abslist.txt")
+library(piggyback)
+pb_upload("abs.tar.gz", tag = "v0.0.1")
