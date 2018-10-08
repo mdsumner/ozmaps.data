@@ -36,7 +36,9 @@ c("http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?
 
 tx <- unlist(lapply(urls, readLines))
 
-srcs <- grep("midmif.zip", tx, value = TRUE)
+
+## GPKG
+srcs <- grep("geopackage.zip|gpkg.zip", tx, value = TRUE)
 
 src <- file.path("http://www.abs.gov.au", unlist(lapply(strsplit(unlist(lapply(strsplit(srcs, "href=\"/"), function(x) x[2])), "\"><img src="), function(a) a[1])))
 src <- gsub(" ", "%20", src)
@@ -44,7 +46,73 @@ bname <- unlist(lapply(strsplit(src, "&"), function(a) a[2]))
 for (i in seq_along(src)) {
   aname <- file.path("extdata/abs", bname[i])
   if (!file.exists(aname)) {
-  curl::curl_download(src[i], aname)
+    curl::curl_download(src[i], aname)
   }
 }
 
+for (i in seq_along(src)) {
+  aname <- file.path("extdata/abs", bname[i])
+  unzip(aname, exdir = "extdata/abs-gpkg")
+}
+
+## SHP
+srcs <- grep("shp.zip|shape.zip", tx, value = TRUE)
+
+src <- file.path("http://www.abs.gov.au", unlist(lapply(strsplit(unlist(lapply(strsplit(srcs, "href=\"/"), function(x) x[2])), "\"><img src="), function(a) a[1])))
+src <- gsub(" ", "%20", src)
+bname <- unlist(lapply(strsplit(src, "&"), function(a) a[2]))
+for (i in seq_along(src)) {
+  aname <- file.path("extdata/abs", bname[i])
+  if (!file.exists(aname)) {
+    curl::curl_download(src[i], aname)
+  }
+}
+
+for (i in seq_along(src)) {
+  aname <- file.path("extdata/abs", bname[i])
+  unzip(aname, exdir = "extdata/abs-shp")
+}
+
+#
+# ## MIF
+# srcs <- grep("midmif.zip", tx, value = TRUE)
+#
+# src <- file.path("http://www.abs.gov.au", unlist(lapply(strsplit(unlist(lapply(strsplit(srcs, "href=\"/"), function(x) x[2])), "\"><img src="), function(a) a[1])))
+# src <- gsub(" ", "%20", src)
+# bname <- unlist(lapply(strsplit(src, "&"), function(a) a[2]))
+# for (i in seq_along(src)) {
+#   aname <- file.path("extdata/abs", bname[i])
+#   if (!file.exists(aname)) {
+#   curl::curl_download(src[i], aname)
+#   }
+# }
+#
+# for (i in seq_along(src)) {
+#   aname <- file.path("extdata/abs", bname[i])
+#   unzip(aname, exdir = "extdata/abs-mif")
+# }
+#
+#
+# ## TAB
+# srcs <- grep("tab.zip", tx, value = TRUE)
+#
+# src <- file.path("http://www.abs.gov.au", unlist(lapply(strsplit(unlist(lapply(strsplit(srcs, "href=\"/"), function(x) x[2])), "\"><img src="), function(a) a[1])))
+# src <- gsub(" ", "%20", src)
+# bname <- unlist(lapply(strsplit(src, "&"), function(a) a[2]))
+# for (i in seq_along(src)) {
+#   aname <- file.path("extdata/abs", bname[i])
+#   if (!file.exists(aname)) {
+#     curl::curl_download(src[i], aname)
+#   }
+# }
+#
+# for (i in seq_along(src)) {
+#   aname <- file.path("extdata/abs", bname[i])
+#   unzip(aname, exdir = "extdata/abs-tab")
+# }
+#
+#
+#
+#
+#
+#
