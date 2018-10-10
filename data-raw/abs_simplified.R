@@ -15,3 +15,34 @@ library(piggyback)
 pb_upload("abs-simplified.tar.gz", tag = "v0.0.3")
 
 
+
+abs %>% dplyr::filter(core) %>% summarize(sum(size))
+
+f <- abs %>% dplyr::filter(core) %>% mutate(filename = files[file])
+library(gibble)
+## which have holes
+gibble(readRDS(file.path("extdata/abs-simplified", f$filename[1]))) %>%
+  group_by(object, subobject) %>% dplyr::filter(n() > 1) %>% distinct(object)
+
+
+## UCL Urban Centre and Locality
+
+## SUA Significant Urban Area
+
+## STE State and Territory
+
+## SOS, SOSR Section of State, Section of State Range
+
+## SED State Electoral Divisions
+
+## RA Remoteness Structure
+
+## IARE, ILOC, IREG Indigenous Areas, Locations, Regions
+
+## GCCSA Greater Capital City Statistical Areas
+
+## DZN The Destination Zone regions are not an Australian Statistical Geography
+## Standard (ASGS) structure and do not represent an Australian Bureau of
+## Statistics (ABS) standard.
+
+## CED Commonwealth Electoral Divisions

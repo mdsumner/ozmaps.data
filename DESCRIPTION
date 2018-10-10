@@ -1,9 +1,15 @@
 Package: ozmaps.data
 Version: 0.0.0.9000
-Title: What the Package Does (one line, title case)
-Description: What the package does (one paragraph).
+Title: Detailed Spatial Data Sets of Australia 
+Description: Provides spatial data sets of Australia. Included are 
+ statistical and other regions from the Australian Bureau of Statistics, and state and
+ territory boundaries. A compromise of geospatial detail and storage size is used
+ to enable the entire country to be provided. 
 Authors@R: person("Michael", "Sumner", email = "mdsumner@gmail.com", role = c("aut", "cre"))
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
+RoxygenNote: 6.1.0
+URL: https://github.com/mdsumner/ozmaps.data
+BugReports: https://github.com/mdsumner/ozmaps.data/issues
