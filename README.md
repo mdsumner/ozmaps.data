@@ -16,8 +16,8 @@ devtools::install_github("mdsumner/ozmaps.data")
 
 ## Example
 
-Here we plot each available data
-set.
+Here we plot each available data set with a few variations using various
+packages.
 
 ``` r
 LCC <- "+proj=lcc +lon_0=130 +lat_0=-20 +lat_1=-43 +lat_2=-10 +datum=WGS84"
@@ -79,31 +79,31 @@ plot(abs_ra, main = "Regional Areas")
 ``` r
 
 
-plot(abs_sa2, main = 'abs_sa2')
+plot(st_transform(abs_sa2, 3112), main = 'abs_sa2', graticule = TRUE)
 ```
 
 <img src="man/figures/README-plots-6.png" width="100%" />
 
 ``` r
-plot(abs_sa3, main = 'abs_sa3')
+plot(st_transform(abs_sa3, 28354), main = 'abs_sa3', graticule = TRUE)
 ```
 
 <img src="man/figures/README-plots-7.png" width="100%" />
 
 ``` r
-plot(abs_sa4, main = 'abs_sa4')
+plot(st_transform(abs_sa4, 28348), main = 'abs_sa4', graticule = TRUE)
 ```
 
 <img src="man/figures/README-plots-8.png" width="100%" />
 
 ``` r
-plot(abs_sed, main = 'abs_sed')
+plot(st_transform(abs_sed, 3111), main = 'abs_sed', graticule = TRUE)
 ```
 
 <img src="man/figures/README-plots-9.png" width="100%" />
 
 ``` r
-plot(abs_ste, main = 'abs_ste')
+plot(st_transform(abs_ste, "+proj=gnom +lon_0=160 +lat_0=0 +datum=WGS84"), main = 'abs_ste', graticule = TRUE)
 ```
 
 <img src="man/figures/README-plots-10.png" width="100%" />

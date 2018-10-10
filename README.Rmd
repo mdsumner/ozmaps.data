@@ -63,11 +63,11 @@ print(tasmap + kregion, vp = viewport(0.85, 0.27, width = 0.3, height = 0.5))
 plot(abs_ra, main = "Regional Areas")
 
 
-plot(abs_sa2, main = 'abs_sa2')
-plot(abs_sa3, main = 'abs_sa3')
-plot(abs_sa4, main = 'abs_sa4')
-plot(abs_sed, main = 'abs_sed')
-plot(abs_ste, main = 'abs_ste')
+plot(st_transform(abs_sa2, 3112), main = 'abs_sa2', graticule = TRUE)
+plot(st_transform(abs_sa3, 28354), main = 'abs_sa3', graticule = TRUE)
+plot(st_transform(abs_sa4, 28348), main = 'abs_sa4', graticule = TRUE)
+plot(st_transform(abs_sed, 3111), main = 'abs_sed', graticule = TRUE)
+plot(st_transform(abs_ste, "+proj=gnom +lon_0=160 +lat_0=0 +datum=WGS84"), main = 'abs_ste', graticule = TRUE)
 
 ```
 
