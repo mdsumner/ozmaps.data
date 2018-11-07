@@ -12,5 +12,6 @@ f <- file.path("extdata/vicmap/address", "SDM539272.zip")
 curl::curl_download(u, f)
 
 library(piggyback)
-pb_upload(f, tag = "v0.0.3")
-
+file.copy(f, ".")
+pb_upload(basename(f), tag = "v0.0.3")
+unlink(basename(f))
