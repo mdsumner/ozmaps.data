@@ -2,6 +2,7 @@
 ^README\.Rmd$
 ^\.*txt$
 ^\.*tar\.gz$
+^\.zip$
 ^ozmaps\.data\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
