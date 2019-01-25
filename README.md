@@ -3,6 +3,10 @@
 
 # ozmaps.data
 
+NOTE: this is a *raw data package*, it is used to help create the
+[ozmaps package](https://github.com/mdsumner/ozmaps), which may be more
+suitable for your mapping needs.
+
 The goal of ozmaps.data is to provide reasonably detailed data sets for
 various spatial subdivisions of Australia.
 
@@ -24,7 +28,7 @@ LCC <- "+proj=lcc +lon_0=130 +lat_0=-20 +lat_1=-43 +lat_2=-10 +datum=WGS84"
 
 library(ozmaps.data)
 library(sf)
-#> Linking to GEOS 3.6.2, GDAL 2.2.3, PROJ 4.9.3
+#> Linking to GEOS 3.7.0, GDAL 2.3.2, PROJ 5.2.0
 library(ggplot2)
 plot(abs_ced, main = "Commonwealth Electoral Divisions")
 ```
