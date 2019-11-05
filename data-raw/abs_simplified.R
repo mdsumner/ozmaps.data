@@ -1,11 +1,14 @@
 ## focus on something properly central
 
-fs <- list.files("extdata/abs-shp", pattern = "AUST.*shp$", full.names = TRUE)
+fs <- list.files("extdata/abs-mif", pattern = "AUST.*mif$", full.names = TRUE)
 
-l <- purrr::map(fs, ~rmapshaper::ms_simplify(sf::read_sf(.x)))
+l <- purrr::map(fs, ~rmapshaper::ms_simplify(sf::read_sf(.x), keep = 0.05, keep_shapes = TRUE))
 for (i in seq_along(l)) {
-  saveRDS(l[[i]], file.path("extdata/ABS-simplified", gsub("shp", "rds", basename(fs[i]))))
+  saveRDS(l[[i]], file.path("extdata/abs-simplified", gsub("mif", "rds", basename(fs[i]))),
+          compress = "xz", version = 2)
 }
+
+
 library(piggyback)
 unlink("abs-simplified.tar.gz")
 system("tar cvzf abs-simplified.tar.gz extdata/abs-simplified")
